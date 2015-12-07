@@ -5,9 +5,10 @@ class Home extends CI_Controller {
 	public function index() {
 		
 		$this->load->model("usuario");
-		$this->b = $this->usuario->encontrar(1);
+		$this->usuario->encontrar(1);
+		$nombre = $this->usuario->getNombre();
+		$apellido = $this->usuario->getApellido();
+		$this->b = array("nombre" => $nombre, "apellido" => $apellido);
 		$this->load->view("home", $this->b);
-		//echo $this->usuario->getNombre() . "<br>";
-		//echo $this->usuario->getApellido();
 	}
 }
