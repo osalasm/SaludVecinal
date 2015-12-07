@@ -1,4 +1,4 @@
 <?php $this->load->view("cabecera")?>
-<h3>el home</h3>
+	<h1><?php if(isset($this->b)) echo $this->b?></h1>
 </body>
 </html>
