@@ -3,10 +3,12 @@
 class Home extends CI_Controller {
 
 	public function index() {
-		$this->load->model("usuario");
-		$this->usuario->encontrar(1);
-		$nombre = $this->usuario->getNombre();
-		$apellido = $this->usuario->getApellido();
+		$this->load->model("Usuario");
+		$rut = $this->Usuario->getRut();
+		exit(var_dump($rut));
+		$nombre = $this->Usuario->getNombre();
+		$apellido = $this->Usuario->getApellido();
+
 		if($this->_esVecino()) {
 			$this->vecino = array("nombre" => $nombre, "apellido" => $apellido);
 			$this->load->view("home", $this->vecino);
@@ -22,7 +24,6 @@ class Home extends CI_Controller {
 	}
 
 	private function _esVecino() {
-		return false;
 	}
 
 	private function _esProfesional() {
