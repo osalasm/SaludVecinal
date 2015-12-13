@@ -4,15 +4,21 @@
 		<table>
 			<tr>
 				<td>RUT</td>
-				<td><input type="text" name="RUT"></td>
+				<td><input type="text" name="RUT" value="15333365"></td>
 			</tr>
 			<tr>
 				<td>Password</td>
-				<td><input type="password" name="password"></td>
+				<td><input type="password" name="contrasena" value="1234"></td>
 			</tr>
 			<tr>
 				<td></td>
 				<td><input type="submit" value="Ingresar"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><ul>
+					<a href="#">Recordar contrasena</a>
+				</ul></td>
 			</tr>
 		</table>
 	</form>
