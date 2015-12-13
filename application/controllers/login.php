@@ -1,20 +1,18 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Login extends CI_Controller {
+class Login extends CI_Controller{
 
 	public function index(){
-
-		if(isset($_POST["RUT"]) && isset($_POST["password"])) {
+		if(isset($_POST["RUT"]) && isset($_POST["contrasena"])) {
 			$rut = $_POST["RUT"];
-			$password = $_POST["password"];
-			
-			if($this->_credencialesValidas($rut, $password) &&
+			$contrasena = $_POST["contrasena"];
+		
+			if($this->_credencialesValidas($rut, $contrasena) &&
 				$this->_esRutValido($rut)) {
 				redirect(BASE_URL . "home");
 			} else {
 				$mensaje = "Usuario Invalido";
-				$recordar = "Si";
-				$a = array("mensaje" => $mensaje, "recordar" => $recordar);
+				$a = array("mensaje" => $mensaje);
 				$this->load->view("login", $a);
 			}
 		} else {
@@ -24,8 +22,11 @@ class Login extends CI_Controller {
 
 	//Devuelve verdadero si Rut y Contraseña coinciden, 
 	//de lo contrario retorna falso.
-	private function _credencialesValidas($usuario_rut, $usuario_contrasena){
-		return true;
+	private function _credencialesValidas($rut, $contrasena) {
+		$this->load->model("Usuario");
+		if($this->Usuario->esCredencialValida($rut, $contrasena)){
+			return true;
+		}
 	}
 
 	private function _esRutValido($rut) {
